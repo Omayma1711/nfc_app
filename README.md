@@ -1,126 +1,49 @@
-# Web App Hackathon Project
+# Projet Android - Validation NFC avec Application Web
 
-## Description
+Ce projet Android est conçu pour fonctionner de paire avec une application web. Son but est de vérifier l'identité d'une personne en validant un code généré par l'application web, puis en scannant un tag NFC. Toutes les vérifications sont effectuées via une API pour s'assurer que le tag NFC est valide et correspond à une personne habilitée.
 
-Ce projet est une application web développée en utilisant Create React App. Il s'agit d'une application front-end conçue pour un hackathon, offrant une interface utilisateur riche et interactive.
+## Fonctionnalités
+
+1. **Validation de code** : Saisie d'un code généré par l'application web et validation via une API.
+2. **Scan NFC** : Lecture des données NFC après validation du code.
+3. **Vérification d'identité** : Confirmation que le tag NFC correspond bien à une personne habilitée.
+4. **Popup de validation** : Affichage d'une popup indiquant si le scan NFC est accepté ou refusé.
+5. **Communication API** : Envoi des résultats de validation (code et NFC) à l'API pour validation ou refus de la connexion en fonction du token.
 
 ## Structure du projet
 
-```
-web-app-hackaton-dev/
-│
-├── public/
-│   ├── favicon.ico             # Icône du site web
-│   ├── index.html              # Page HTML principale
-│   ├── logo192.png             # Logo de l'application (192x192)
-│   ├── logo512.png             # Logo de l'application (512x512)
-│   ├── manifest.json           # Manifest du PWA
-│   └── robots.txt              # Fichier de configuration pour les robots d'indexation
-│
-├── src/
-│   ├── images/                 # Dossier contenant les images et vidéos
-│   │   ├── Modern Brain Tech Logo.png
-│   │   ├── pexels-anais-virel-1288641963-264049497.jpg
-│   │   ├── pexels-diva-20153179.jpg
-│   │   └── TechTornadoes.mp4
-│   │
-│   ├── pages/                  # Dossier contenant les pages de l'application
-│   │   ├── LoginPage.js
-│   │   └── Main.js
-│   │
-│   ├── App.css                 # Feuille de style pour l'application
-│   ├── App.js                  # Composant principal de l'application
-│   ├── index.css               # Feuille de style globale
-│   └── index.js                # Point d'entrée de l'application
-│
-├── .gitignore                  # Fichiers et dossiers à ignorer par Git
-├── package.json                # Fichier de configuration npm
-├── package-lock.json           # Fichier de verrouillage des dépendances npm
-└── README.md                   # Documentation du projet
-```
+### Fichiers principaux
 
-## Prérequis
+- **MainActivity.kt** : Gère l'activité principale, y compris la validation du code.
+- **NfcScanActivity.kt** : Gère l'activité de scan NFC.
+- **ApiService.kt** : Service pour les appels API.
+- **JwtResponse.kt** : Modèle de réponse pour le JWT.
+- **ValidationResponse.kt** : Modèle de réponse pour la validation.
 
-Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
+### Layouts XML
 
-- Node.js
-- npm (Node Package Manager)
+- **activity_main.xml** : Interface utilisateur pour l'activité principale avec un champ de saisie de code et un bouton de validation.
+- **activity_nfc_scan.xml** : Interface utilisateur pour l'activité de scan NFC avec une TextView pour afficher les données NFC.
+- **rounded_border.xml** : Définition des bordures arrondies pour la mise en forme des éléments UI.
 
-## Installation
+## Configuration requise
 
-1. Clonez le dépôt :
+- Android Studio 4.1 ou plus récent
+- SDK Android 21 ou supérieur
 
-```bash
-git clone https://github.com/TechTornadoes/web-app-hackaton.git
-```
+## Instructions d'installation
 
-2. Naviguez dans le répertoire du projet :
-
-```bash
-cd web-app-hackaton-dev
-```
-
-3. Installez les dépendances :
-
-```bash
-npm install
-```
+1. Clonez le dépôt.
+   ```bash
+   git clone https://github.com/HugoBiegas/nfc-mobile-code-hackaton.git
+   ```
+2. Ouvrez le projet avec Android Studio.
+3. Synchronisez les dépendances du projet.
+4. Exécutez l'application sur un émulateur ou un appareil Android physique.
 
 ## Utilisation
 
-Pour démarrer l'application en mode développement, utilisez la commande suivante :
-
-```bash
-npm start
-```
-
-Cela lancera l'application et vous pourrez y accéder via `http://localhost:3000` dans votre navigateur. La page se rechargera automatiquement lorsque vous apportez des modifications.
-
-## Scripts disponibles
-
-Dans le répertoire du projet, vous pouvez exécuter les scripts suivants :
-
-- `npm start`: Exécute l'application en mode développement.
-- `npm test`: Lance le runner de tests en mode interactif.
-- `npm run build`: Construit l'application pour la production dans le dossier `build`. Il regroupe correctement React en mode production et optimise la construction pour obtenir les meilleures performances.
-- `npm run eject`: Si vous souhaitez avoir un contrôle total sur la configuration des fichiers, vous pouvez exécuter ce script. **Note:** cette action est irréversible.
-
-## Déploiement
-
-Pour déployer l'application en production, exécutez la commande suivante :
-
-```bash
-npm run build
-```
-
-Cela créera un dossier `build` contenant les fichiers optimisés pour la production. Vous pouvez ensuite déployer le contenu de ce dossier sur un service d'hébergement de votre choix.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Lancez l'application.
+2. Entrez le code généré par l'application web dans le champ prévu et appuyez sur le bouton "Validate".
+3. Si le code est valide, accédez à l'écran de scan NFC et approchez un tag NFC compatible de l'appareil.
+4. Une popup s'affichera pour indiquer si le tag NFC est accepté ou refusé.
